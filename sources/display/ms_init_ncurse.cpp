@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:52:25 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 12:47:31 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/27 15:17:28 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_init_screen(void **window)
 		delscreen((SCREEN *)*window);
 		return (1);
 	}
+	curs_set(0);
 	return (0);
 }
