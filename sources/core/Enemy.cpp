@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 20:28:58 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/27 23:26:06 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ Enemy::Enemy(void)
 	return ;
 }
 
-Enemy::Enemy(int type)
+Enemy::Enemy(int type):_x(0),_y(0)
 {
 	_type = type;
 	std::srand(time(NULL));
 	_x = rand() % LINES - 10;
-	_y = COLS - 5;
+	_y = COLS - 6;
 	//_type = rand() % 7 + 1;
 	_x_start = _x;
 	_y_start = _y;
@@ -46,7 +46,6 @@ Enemy::Enemy(int x, int y, int type)
 	_x = x;
 	_y = y;
 	_type = type;
-	//std::cout << "test = " << _x << std::endl;
 }
 
 Enemy::~Enemy(void)
@@ -95,8 +94,18 @@ int	Enemy::get_Y_E(void) const
 	return (_y);
 }
 
+void	Enemy::set_X_E(int x)
+{
+	_x = x;
+}
+
+void	Enemy::set_Y_E(int y)
+{
+	_y = y;
+}
+
 void	Enemy::movement_E(void)
 {
-	_x = get_X_E();
-	_y = get_Y_E();
+	this->set_X_E(get_X_E());
+	this->set_Y_E(get_Y_E());
 }

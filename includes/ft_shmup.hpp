@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 20:03:58 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:36:29 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 #include "Enemy.hpp"
 #include "ncurses.h"
 #include "Missiles.hpp"
+#include "Weapon.hpp"
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
+extern std::vector<SpaceShip>	g_allies;
 
 
 # define FRAME_MS 16

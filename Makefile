@@ -1,4 +1,3 @@
-
 NAME			=		ft_shmup
 
 #############################################################################
@@ -43,6 +42,7 @@ SRCS				=\
 						Enemy.cpp\
 						spawn_enemies.cpp\
 						Missiles.cpp\
+						Weapons.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\

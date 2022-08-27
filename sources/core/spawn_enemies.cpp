@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:53:59 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 20:27:44 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/27 23:20:01 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_spawn_phase_1(t_data *game)
 
 	//std::srand(time(NULL));
 	//decision = rand() % 2 + 1;
-	if ((game->loop % (60 * 4) == 0) && g_enemies.size() <= 10)
+	if ((game->loop % (30 * 4) == 0) && g_enemies.size() <= 10)
 		g_enemies.push_back(Enemy(PUSHER));
 	//if ((game->loop % (60 * 8) == 0) && g_enemies.size() <= 10)
 	//	g_enemies.push_back(Enemy(PUSHER));
