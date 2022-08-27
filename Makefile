@@ -39,6 +39,8 @@ SRCS_DISPLAY	=	./display/
 SRCS				=\
 					$(addprefix $(SRCS_CORE),	\
 						main.cpp\
+						SpaceShip.cpp\
+						Enemy.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\
