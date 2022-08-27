@@ -6,10 +6,12 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:52:25 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 15:17:28 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/27 17:11:42 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ostream>
+#include <iostream>
 #include <ncurses.h>
 
 int	ft_init_screen(void **window)
@@ -22,7 +24,8 @@ int	ft_init_screen(void **window)
 	{
 		endwin();
 		delscreen((SCREEN *)*window);
-		return (1);
+		std::cout << "Screen initialization went wrong" << std::endl;
+		exit (1);
 	}
 	curs_set(0);
 	return (0);

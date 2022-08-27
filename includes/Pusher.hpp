@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Enemy.hpp                                          :+:      :+:    :+:   */
+/*   Pusher.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 12:20:44 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 17:25:27 by aweaver          ###   ########.fr       */
+/*   Created: 2022/08/27 16:00:13 by jtaravel          #+#    #+#             */
+/*   Updated: 2022/08/27 16:14:56 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_HPP
+#ifndef PUSHER_HPP
 
-#define ENEMY_HPP
+#define PUSHER_HPP
 
-#include <iostream>
-#include <string>
+#include "ft_shmup.hpp"
 
-class	Enemy
+class	Pusher: public Enemy
 {
 	private:
-		int	_x;
-		int	_y;
-		int	_type;
-		int	_pm;
-		int	_pa;
-		//int	_hp;
-		int	_speed;	// frame per movement
-		int	_x_start;
-		int	_y_start;
+		int	_dmg;
+		int	_pm_cost;
 	public:
-		Enemy(void);
-		Enemy(int type);
-		Enemy(int x, int y, int type);
-		virtual ~Enemy(void);
-		void	movement_E(void);
-		int	get_X_E(void);
-		int	get_Y_E(void) const;
-		void	setType(int type);
-};
+		Pusher(int phase);
+}
 
 #endif

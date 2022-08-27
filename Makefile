@@ -41,6 +41,7 @@ SRCS				=\
 						main.cpp\
 						SpaceShip.cpp\
 						Enemy.cpp\
+						spawn_enemies.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\

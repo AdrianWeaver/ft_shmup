@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 15:00:06 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/27 19:06:47 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include "SpaceShip.hpp"
 #include "Enemy.hpp"
+#include "ncurses.h"
+#include <vector>
+
+// GLOBALS BECAUSE WE CAN <3
+extern std::vector<Enemy>	g_enemies;
 
 
 # define FRAME_MS 16
@@ -22,6 +27,28 @@
 # define KEY_ESC 27
 # define KEY_CTRL_C 3
 # define KEY_CTRL_D 4
+
+//NAME ENEMY
+
+#define STAY 0
+#define PUSHER 1
+#define PATROL 2
+#define PATROL_Z 3
+#define PUSHER_Z 4
+#define PUSHER_UP 5
+#define PUSHER_DOWN 6
+#define PATROL_DOWN 7
+
+typedef struct s_data
+{
+	int loop;
+	int phase;
+}		t_data;
+
 int	ft_init_screen(void **window);
+int ft_spawn_phase_1(t_data &game);
+int ft_spawn_phase_2(t_data &game);
+int ft_spawn_phase_3(t_data &game);
+int	ft_spawn_mobs(t_data &game);
 
 #endif
