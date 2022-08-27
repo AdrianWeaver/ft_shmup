@@ -6,17 +6,18 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 19:06:47 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/27 20:03:58 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SHMUP_HPP
 # define FT_SHMUP_HPP
 
+#include <vector>
 #include "SpaceShip.hpp"
 #include "Enemy.hpp"
 #include "ncurses.h"
-#include <vector>
+#include "Missiles.hpp"
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
@@ -27,6 +28,7 @@ extern std::vector<Enemy>	g_enemies;
 # define KEY_ESC 27
 # define KEY_CTRL_C 3
 # define KEY_CTRL_D 4
+# define KEY_SPACE 32
 
 //NAME ENEMY
 
@@ -39,11 +41,15 @@ extern std::vector<Enemy>	g_enemies;
 #define PUSHER_DOWN 6
 #define PATROL_DOWN 7
 
+#define ALLY 1
+#define ENEMY -1
+
 typedef struct s_data
 {
 	int loop;
 	int phase;
 }		t_data;
+
 
 int	ft_init_screen(void **window);
 int ft_spawn_phase_1(t_data &game);

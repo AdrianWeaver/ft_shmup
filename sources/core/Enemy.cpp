@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 19:39:04 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/27 20:28:58 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Enemy::Enemy(int type)
 	std::srand(time(NULL));
 	_x = rand() % LINES - 10;
 	_y = COLS - 5;
-	_type = rand() % 7 + 1;
+	//_type = rand() % 7 + 1;
 	_x_start = _x;
 	_y_start = _y;
 	_pm = 1;
@@ -60,6 +60,8 @@ int	Enemy::get_X_E(void)
 
 	//std::srand(time(NULL));
 	//random = std::rand() % 2 + 1;
+	if (_type == STAY)
+		return (_x);
 	if (_pm >= _speed)
 	{
 		if (_type == PUSHER)
@@ -84,6 +86,8 @@ void	Enemy::setType(int type)
 
 int	Enemy::get_Y_E(void) const
 {
+	if (_type == STAY)
+		return (_y);
 	if (_type == PUSHER)
 		return (_y - 2);
 	if (_type == PATROL)

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 19:45:44 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/27 20:26:40 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,15 @@ int	main(void)
 	if (ft_init_screen(&window) == 1)
 		return (0);
 	SpaceShip Ship(5,4);
-	Enemy	enemy;
+//	Enemy	enemy;
 //	e_list.push_back(enemy);
-	Enemy	enemy2;
+//	Enemy	enemy2;
 	game.loop = 0;
 	game.phase = 1;
 	while (1)
 	{
 		ft_spawn_mobs(game);
+		ft_display(window, Ship);
 		key = getch();
 		if (key == KEY_ESC || key == 3)
 			break;
@@ -59,7 +60,6 @@ int	main(void)
 		//enemy2.movement_E();
 		//mvwprintw((WINDOW *)window, enemy.get_X_E(), enemy.get_Y_E(), "<=||<<");
 		//mvwprintw((WINDOW *)window, enemy2.get_X_E(), enemy2.get_Y_E(), "<=||<<");
-		ft_display(window, Ship);
 		refresh();			/* Print it on to the real screen */
 		getch();			/* Wait for user input */
 		std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,60>>(1));
