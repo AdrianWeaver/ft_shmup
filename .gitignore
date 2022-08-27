@@ -57,3 +57,4 @@ dkms.conf
 *.swp
 *.swo
 *tags
+.syntastic_cpp_config

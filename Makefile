@@ -27,6 +27,7 @@ SRCS_PARSING	=	./parsing/
 SRCS_ERRORS		=	./errors/
 SRCS_CORE		=	./core/
 SRCS_UTILS		=	./utils/
+SRCS_DISPLAY	=	./display/
 
 
 #############################################################################
@@ -47,6 +48,9 @@ SRCS				=\
 					 )\
 					$(addprefix $(SRCS_UTILS),		\
 						my_example_utils_file.cpp\
+					)\
+					$(addprefix $(SRCS_DISPLAY),		\
+						ms_init_ncurse.cpp\
 					)
 
 OBJS			=	$(addprefix $(OBJS_PATH), $(SRCS:.cpp=.o))
