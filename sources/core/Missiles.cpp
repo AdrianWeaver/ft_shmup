@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 18:00:27 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 20:01:14 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:44:06 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	Missiles::movement(void)
 	return ;
 }
 
-void	Missiles::action(void *&window)
+void	Missiles::shoot_action(void *&window)
 {
 	this->generate_pm();
 	this->movement();

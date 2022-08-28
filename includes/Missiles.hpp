@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:52:56 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 20:22:40 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:44:12 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Missiles: virtual public Pusher
 		Missiles(void);
 		Missiles(int x, int y);
 		~Missiles(void);
-		void	action(void *&window);
+		void	shoot_action(void *&window);
 };
 
 #endif
