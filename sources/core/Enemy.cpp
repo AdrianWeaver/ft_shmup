@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 14:36:44 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:11:45 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ Enemy::Enemy(void):_x (rand() & LINES - 10),_y (COLS),_dir (ENEMY)
 Enemy::Enemy(int type):_x(0),_y(0)
 {
 	_type = type;
-	_x = rand() % LINES;
+	_x = rand() % LINES + 1;
+	if (_x <= 10)
+		_x += 10;
 	_y = COLS - 6;
 	//_type = rand() % 7 + 1;
 	_x_start = _x;
@@ -39,7 +41,9 @@ Enemy::Enemy(int type):_x(0),_y(0)
 
 Enemy::Enemy(const std::string &shape):_shape(shape)
 {
-	_x = rand() % LINES;
+	_x = rand() % LINES + 1;
+	if (_x <= 10)
+		_x += 10;
 	_y = COLS - 5;
 	//_type = rand() % 7 + 1;
 	_x_start = _x;

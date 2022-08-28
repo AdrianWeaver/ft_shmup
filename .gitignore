@@ -43,6 +43,7 @@ ft_shmup
 *.su
 *.idb
 *.pdb
+*logs
 
 # Kernel Module Compile Results
 *.mod*

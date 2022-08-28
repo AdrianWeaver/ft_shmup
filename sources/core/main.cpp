@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 16:01:33 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:19:59 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,24 @@
 #include <chrono>
 #include <vector>
 #include "ft_shmup.hpp"
+#include <string.h>
 
-std::vector<Enemy>		g_enemies;
 std::vector<SpaceShip>	g_allies;
-std::vector<Pusher>		g_pusher;
-std::vector<Objects>	g_objs;
-std::vector<Missiles>	g_missiles;
 std::vector<Weapon>	g_weapon;
+std::vector<Pusher>	g_pusher;
+std::vector<Missiles>	g_missiles;
+std::vector<Objects>	g_objs;
+
+void	ft_background(void *window)
+{
+	for (size_t i = 0; i < g_objs.size(); i++)
+	{
+		g_objs[i].aff_obj();
+		mvwaddch((WINDOW *)window, g_objs[i].get_X_O(), g_objs[i].get_Y_O(), g_objs[i].get_S() | COLOR_PAIR(g_objs[i].get_C() | A_BOLD));
+	}
+	//clear();
+	refresh();
+}
 
 int	ft_turn(void *&window, int key)
 {
@@ -33,10 +44,11 @@ int	ft_turn(void *&window, int key)
 		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
 			//return (1);
 	}
-	for (size_t i = 0; i < g_weapon.size(); i++)
+	 for (size_t i = 0; i < g_weapon.size(); i++)
 	{
 		g_weapon[i].action(window);
 	}
+
 	for (size_t i = 0; i < g_pusher.size(); i++)
 	{
 		g_pusher[i].action(window);
@@ -44,24 +56,31 @@ int	ft_turn(void *&window, int key)
 			//return (1);
 		//mvwprintw((WINDOW *)window, g_enemies[i].get_X(), g_enemies[i].get_Y(), "<===<");
 	}
-
 	refresh();
 	return (0);
 }
 
-/*void	ft_display_objs(void *&window, t_data *game)
+void	ft_aff_ath(void *window, t_data game)
 {
 	(void)game;
-	for (size_t i = 0; i < g_objs.size(); i++)
+	for (int i = 0; i <= COLS; i++)
+		mvwprintw((WINDOW *)window, 10, i, "_");
+	mvwprintw((WINDOW *)window, 5, 20, "Level Phase: %d\n", game.phase);
+	mvwprintw((WINDOW *)window, 6, 20, "Frags: A DEFINIR\n");
+	mvwprintw((WINDOW *)window, 5, 60, "SCORE: A DEFINIR\n");
+	int w = 60;
+	const char *str = "CPP INVADER\n";
+	for (int j = 0; j <= 11; j++)
 	{
-		mvwaddch((WINDOW *)window, g_objs[i].get_X_O(), g_objs[i].get_Y_O(), g_objs[i].get_S());
+		mvwaddch((WINDOW *)window, 1, w, str[j] | COLOR_PAIR(RED_STAR) | A_BOLD);
+		w++;
 	}
-	refresh();
-}*/
+
+}
 
 int	main(void)
 {
-	void	*window;
+	void		*window;
 	int		key;
 	int		x;
 	int		y;
@@ -73,25 +92,31 @@ int	main(void)
 	std::srand(time(NULL));
 	if (ft_init_screen(&window) == 1)
 		return (0);
-	g_allies.emplace_back(SpaceShip(5,4));
-//	g_objs.push_back(Objects(STAR));
-//	Enemy	enemy;
-//	e_list.push_back(enemy);
-//	Enemy	enemy2;
+	g_allies.emplace_back(SpaceShip(20, 20));
+	start_color();
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+
+	Objects objs(STAR);
+	//g_allies.push_back(Weapon(Ship));
+	g_objs.push_back(objs);
+
 	game.loop = 0;
 	game.phase = 1;
 	while (1)
 	{
 		ft_spawn_mobs(game);
-		//ft_spawn_objs(&game);
+		ft_spawn_objs(&game);
 		if (ft_turn(window, key))
 			break;
+		ft_background(window);
+		ft_aff_ath(window, game);
 		key = getch();
 		if (key == KEY_ESC || key == 3)
 			break;
-		//ft_display_objs(window, &game);
 		//Ship.movement(key);
-		//mvwprintw((WINDOW *)window, 0, 0, " Weapon_x = %d Weapon y = %d\n", weapon.get_X(), weapon.get_Y());
+		//mvwprintw((WINDOW *)window, 0, 0, "%d\n", key);
 		//enemy2.movement_E();
 		//mvwprintw((WINDOW *)window, enemy.get_X(), enemy.get_Y(), "<=||<<");
 		//mvwprintw((WINDOW *)window, enemy2.get_X(), enemy2.get_Y(), "<=||<<");

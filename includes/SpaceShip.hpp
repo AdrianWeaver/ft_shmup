@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:01:04 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 12:05:58 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 12:28:17 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include <string>
 #include <iostream>
+#include "ft_shmup.hpp"
+#include <ncurses.h>
 
 class	SpaceShip
 {

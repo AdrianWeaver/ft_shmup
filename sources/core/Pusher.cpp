@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 08:45:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 14:36:59 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:17:50 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Pusher::~Pusher(void)
 
 void	Pusher::shoot(void)
 {
-	g_enemies.emplace_back(Missiles());
+	g_missiles.emplace_back(Missiles());
 	return ;
 }
 

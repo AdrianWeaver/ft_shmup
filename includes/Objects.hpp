@@ -27,11 +27,11 @@ class	Objects
 	public:
 		Objects(int type);
 		~Objects(void);
+		void	aff_obj(void);
 		int	get_X_O(void);
 		int	get_Y_O(void);
 		int	get_C(void);
 		int	get_S(void);
-		void	aff_obj(void);
 };
 
 #endif

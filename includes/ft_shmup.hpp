@@ -22,14 +22,16 @@
 #include "Weapon.hpp"
 #include "Objects.hpp"
 #include <memory>
+#include "Objects.hpp"
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
 extern std::vector<Weapon> g_weapon;
 extern std::vector<SpaceShip> g_allies;
+extern std::vector<Objects>	g_objs;
 extern std::vector<Pusher> g_pusher;
-extern std::vector<Objects> g_objs;
 extern std::vector<Missiles> g_missiles;
+
 
 # define FRAME_MS 16
 //KEYS
@@ -84,6 +86,13 @@ extern std::vector<Missiles> g_missiles;
 #define PUSHER_UP_PM 0
 #define PUSHER_DOWN_PM 0
 #define PATROL_DOWN_PM 0
+
+//STARS
+
+#define STAR 0
+#define RED_STAR 1
+#define YELLOW_STAR 2
+#define METEOR 3
 
 //STARS
 
