@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 14:25:15 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:29:31 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 std::vector<Enemy>	g_enemies;
 std::vector<SpaceShip>	g_allies;
 std::vector<Pusher>	g_pusher;
+std::vector<Objects>	g_objs;
 
 int	ft_turn(void *&window, int key)
 {
@@ -41,6 +42,16 @@ int	ft_turn(void *&window, int key)
 	return (0);
 }
 
+/*void	ft_display_objs(void *&window, t_data *game)
+{
+	(void)game;
+	for (size_t i = 0; i < g_objs.size(); i++)
+	{
+		mvwaddch((WINDOW *)window, g_objs[i].get_X_O(), g_objs[i].get_Y_O(), g_objs[i].get_S());
+	}
+	refresh();
+}*/
+
 int	main(void)
 {
 	void	*window;
@@ -56,6 +67,7 @@ int	main(void)
 	if (ft_init_screen(&window) == 1)
 		return (0);
 	g_allies.emplace_back(SpaceShip(5,4));
+//	g_objs.push_back(Objects(STAR));
 //	Enemy	enemy;
 //	e_list.push_back(enemy);
 //	Enemy	enemy2;
@@ -64,11 +76,13 @@ int	main(void)
 	while (1)
 	{
 		ft_spawn_mobs(game);
+		//ft_spawn_objs(&game);
 		if (ft_turn(window, key))
 			break;
 		key = getch();
 		if (key == KEY_ESC || key == 3)
 			break;
+		//ft_display_objs(window, &game);
 		//Ship.movement(key);
 		//mvwprintw((WINDOW *)window, 0, 0, " Weapon_x = %d Weapon y = %d\n", weapon.get_X(), weapon.get_Y());
 		//enemy2.movement_E();

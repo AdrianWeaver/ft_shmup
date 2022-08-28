@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 14:28:31 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:18:18 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 #include "ncurses.h"
 #include "Missiles.hpp"
 #include "Weapon.hpp"
+#include "Objects.hpp"
 #include <memory>
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
 extern std::vector<SpaceShip> g_allies;
 extern std::vector<Pusher> g_pusher;
+extern std::vector<Objects> g_objs;
 
 # define FRAME_MS 16
 //KEYS
@@ -81,6 +83,12 @@ extern std::vector<Pusher> g_pusher;
 #define PUSHER_DOWN_PM 0
 #define PATROL_DOWN_PM 0
 
+//STARS
+
+#define STAR 0
+#define RED_STAR 1
+#define YELLOW_STAR 2
+#define METEOR 3
 
 typedef struct s_data
 {
@@ -94,5 +102,6 @@ int ft_spawn_phase_1(t_data &game);
 int ft_spawn_phase_2(t_data &game);
 int ft_spawn_phase_3(t_data &game);
 int	ft_spawn_mobs(t_data &game);
+void	ft_spawn_objs(t_data *game);
 
 #endif

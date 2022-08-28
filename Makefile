@@ -44,6 +44,7 @@ SRCS				=\
 						Missiles.cpp\
 						Weapons.cpp\
 						Pusher.cpp\
+						Objects.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\
