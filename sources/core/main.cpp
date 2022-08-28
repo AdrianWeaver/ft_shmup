@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 19:48:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 19:55:18 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@ int	ft_turn(void *&window, int key, t_data *game)
 		{
 			if (g_allies[0].get_Y() == g_pusher[i].get_Y() && g_pusher[i].get_X() == g_allies[0].get_X())
 				return (1);
+			g_pusher[i].action(window);
+		}
+		for (size_t i = 0; i < g_patrol.size(); i++)
+		{
+			if (g_allies[0].get_Y() == g_patrol[i].get_Y() && g_patrol[i].get_X() == g_allies[0].get_X())
+				return (1);
+			g_patrol[i].action(window);
+			if ((game->loop % (60 * 4) == 0))
+				g_patrol[i].go_front(window);
 		}
 	}
 	for (size_t i = 0; i < g_weapon.size(); i++)
@@ -69,16 +78,6 @@ int	ft_turn(void *&window, int key, t_data *game)
 				game->frags += 1;
 			}
 		}
-	}
-	for (size_t i = 0; i < g_pusher.size(); i++)
-	{
-		g_pusher[i].action(window);
-	}
-	for (size_t i = 0; i < g_patrol.size(); i++)
-	{
-		g_patrol[i].action(window);
-		if ((game->loop % (60 * 4) == 0))
-			g_patrol[i].go_front(window);
 	}
 	refresh();
 	return (0);
