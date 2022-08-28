@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:52:56 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 18:12:14 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:22:40 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_shmup.hpp"
 
-class	Missiles: public Pusher
+class	Missiles: virtual public Pusher
 {
 	private:
 		//int	_hp;

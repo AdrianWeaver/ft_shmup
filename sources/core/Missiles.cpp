@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 18:00:27 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 18:36:54 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:01:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,39 +57,3 @@ void	Missiles::action(void *&window)
 	this->movement();
 	this->display(_shape, window);
 }
-//=====
-/*
-Weapon::Weapon(void): _pm(0),_pm_cost(ALLY_PM)
-{
-	this->_shape = '-';
-	return ;
-}
-
-Weapon::Weapon(int x, int y, int dir, char shape): _pm(0), _pm_cost(1)
-{
-	this->_x = x;
-	this->_y = y;
-	this->_dir = dir;
-	this->_shape = shape;
-}
-
-Weapon::~Weapon(void)
-{
-	return ;
-}
-
-void	Weapon::generate_pm(void)
-{
-	++this->_pm;
-}
-
-void	Weapon::movement(void)
-{
-	if (_pm >= _pm_cost)
-	{
-		++_y;
-		_pm -= _pm_cost;
-	}
-	return ;
-}
-*/

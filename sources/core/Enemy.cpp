@@ -6,17 +6,14 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 19:01:03 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:27:54 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.hpp"
 
-Enemy::Enemy(void):_x (rand() & LINES - 10),_y (COLS),_dir (ENEMY)
+Enemy::Enemy(void):_x (11+ (rand() % (LINES - 11))),_y (COLS - 1),_dir (ENEMY)
 {
-	//_x = rand() % LINES - 10;
-	//_y = COLS;
-	//_type = rand() % 7 + 1;
 	_x_start = _x;
 	_y_start = _y;
 	_pm = 1;
@@ -30,7 +27,6 @@ Enemy::Enemy(int type):_x(0),_y(0)
 	if (_x <= 10)
 		_x += 10;
 	_y = COLS - 6;
-	//_type = rand() % 7 + 1;
 	_x_start = _x;
 	_y_start = _y;
 	_pm = 1;
@@ -39,11 +35,8 @@ Enemy::Enemy(int type):_x(0),_y(0)
 
 Enemy::Enemy(const char &shape):_shape(shape)
 {
-	_x = rand() % LINES + 1;
-	if (_x <= 10)
-		_x += 10;
-	_y = COLS - 5;
-	//_type = rand() % 7 + 1;
+	_x = 11 + (rand() % (LINES - 11));
+	_y = COLS - 1;
 	_x_start = _x;
 	_y_start = _y;
 	_pm = 1;
