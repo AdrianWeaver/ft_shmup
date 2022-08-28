@@ -57,7 +57,8 @@ SRCS				=\
 						my_example_utils_file.cpp\
 					)\
 					$(addprefix $(SRCS_DISPLAY),		\
-						ms_init_ncurse.cpp\
+						init_ncurse.cpp\
+						menu.cpp\
 					)
 
 OBJS			=	$(addprefix $(OBJS_PATH), $(SRCS:.cpp=.o))

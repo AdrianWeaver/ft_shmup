@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 19:25:57 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 19:43:25 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,14 @@ typedef struct s_data
 }		t_data;
 
 
-int	ft_init_screen(void **window);
-int ft_spawn_phase_1(t_data &game);
-int ft_spawn_phase_2(t_data &game);
-int ft_spawn_phase_3(t_data &game);
-int	ft_spawn_mobs(t_data &game);
+int		ft_init_screen(void **window);
+int		ft_spawn_phase_1(t_data &game);
+int		ft_spawn_phase_2(t_data &game);
+int		ft_spawn_phase_3(t_data &game);
+int		ft_spawn_mobs(t_data &game);
 void	ft_spawn_objs(t_data *game);
+int		ft_secure_nodelay(void **window);
+int		ft_menu(void *window);
+
 
 #endif

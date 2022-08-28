@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 18:51:30 by omoudni          ###   ########.fr       */
+/*   Updated: 2022/08/28 19:48:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_background(void *window)
 int	ft_turn(void *&window, int key, t_data *game)
 {
 	clear();
-	(void)key;
 	for (size_t i = 0; i < g_allies.size(); i++)
 	{
 		g_allies[i].action(key, window);
@@ -82,41 +81,11 @@ int	ft_turn(void *&window, int key, t_data *game)
 			g_patrol[i].go_front(window);
 	}
 	refresh();
-//	wrefresh(window);
-	return (0);
-}
-
-int	ft_menu(void *window)
-{
-	int	ch;
-
-	cbreak();
-	mvwprintw((WINDOW *)window, 0, COLS / 2 - 29, "/*");
-	mvwprintw((WINDOW *)window, 1, COLS / 2 - 29, " *       __  _              _                              ");
-	mvwprintw((WINDOW *)window, 2, COLS / 2 - 29, " *      / _|| |_       ___ | |__   _ __ ___   _   _  _ __  ");
-	mvwprintw((WINDOW *)window, 3, COLS / 2 - 29, " *     | |_ | __|     / __|| '_ \\ | '_ ` _ \\ | | | || '_ \\ ");
-	mvwprintw((WINDOW *)window, 4, COLS / 2 - 29, " *     |  _|| |_      \\__ \\| | | || | | | | || |_| || |_) |");
-	mvwprintw((WINDOW *)window, 5, COLS / 2 - 29, " *     |_|   \\__|     |___/|_| |_||_| |_| |_| \\__,_|| .__/ ");
-	mvwprintw((WINDOW *)window, 6, COLS / 2 - 29, " *                                                 |_|    ");
-	mvwprintw((WINDOW *)window, 7, COLS / 2 - 29, " */");
-	mvwprintw((WINDOW *)window, LINES / 2, COLS / 2 - 12,"press ENTER to continue");
-	refresh();
-	mvwprintw((WINDOW *)window, LINES / 2 + 1, COLS / 2 - 12,"press ESC to quit");
-	refresh();
-	while ((ch = getch()))
-	{
-		printf("%d\n", ch);
-	if (ch == KEY_ESC)
-		return (-1);
-	if (ch == 10)
-		return (0);
-	}
 	return (0);
 }
 
 void	ft_aff_ath(void *window, t_data game)
 {
-	(void)game;
 	for (int i = 0; i <= COLS; i++)
 		mvwprintw((WINDOW *)window, 10, i, "_");
 	mvwprintw((WINDOW *)window, 5, 20, "Level Phase: %d\n", game.phase);
@@ -140,7 +109,7 @@ int	main(void)
 	int		y;
 	t_data	game;
 
-	window = NULL; 
+	window = NULL;
 	x = 10;
 	y = 10;
 	key = 0;
@@ -154,17 +123,9 @@ int	main(void)
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 
 	Objects objs(STAR);
-	//g_allies.push_back(Weapon(Ship));
-	//g_objs.push_back(objs);
-
 	if (ft_menu(window))
 		return (endwin(), 0);
-	raw();
-	noecho();
-	nodelay((WINDOW *)window, TRUE);
-	keypad(stdscr, TRUE);
-	//g_allies.push_back(Ship);
-	//g_allies.push_back(Weapon(Ship));
+	ft_secure_nodelay(&window);
 	game.loop = 0;
 	game.phase = 1;
 	game.score = 0;
@@ -180,12 +141,11 @@ int	main(void)
 		key = getch();
 		if (key == KEY_ESC || key == 3)
 			break;
-		refresh();			/* Print it on to the real screen */
 		wrefresh((WINDOW *)window);
-		getch();			/* Wait for user input */
-		std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,30>>(1));
+		std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,60>>(1));
 		game.loop++;
+		refresh();
 	}
-	endwin();			/* End curses mode  */
+	endwin();
 	return 0;
 }
