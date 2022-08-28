@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_ncurse.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
+/*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 08:52:25 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 15:55:25 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 18:50:44 by omoudni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 int	ft_init_screen(void **window)
 {
 	*window = initscr();
+	cbreak();
+	keypad(stdscr, TRUE);
+	refresh();
 	if (*window == NULL)
 		return (1);
-	if (/*ft_initialise_data() ||*/ raw() || noecho()
-			|| keypad((WINDOW*)*window, TRUE) || nodelay((WINDOW *)*window, TRUE))
+	if (noecho())
 	{
 		endwin();
 		delscreen((SCREEN *)*window);

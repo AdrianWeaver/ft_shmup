@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SpaceShip.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:01:04 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 12:28:17 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 18:35:37 by omoudni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 #include <string>
 #include <iostream>
-#include "ft_shmup.hpp"
 #include <ncurses.h>
+#include "ft_shmup.hpp"
 
 class	SpaceShip
 {
