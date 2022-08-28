@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 18:15:48 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 19:01:03 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Enemy::Enemy(void):_x (rand() & LINES - 10),_y (COLS),_dir (ENEMY)
 	_y_start = _y;
 	_pm = 1;
 	_pa = 1;
-	return ;
 }
 
 Enemy::Enemy(int type):_x(0),_y(0)
@@ -36,10 +35,9 @@ Enemy::Enemy(int type):_x(0),_y(0)
 	_y_start = _y;
 	_pm = 1;
 	_pa = 1;
-	return ;
 }
 
-Enemy::Enemy(const std::string &shape):_shape(shape)
+Enemy::Enemy(const char &shape):_shape(shape)
 {
 	_x = rand() % LINES + 1;
 	if (_x <= 10)
@@ -50,14 +48,12 @@ Enemy::Enemy(const std::string &shape):_shape(shape)
 	_y_start = _y;
 	_pm = 1;
 	_pa = 1;
-	return ;
 }
 
 Enemy::Enemy(int x, int y, int type)
 {
 	_x = x;
 	_y = y;
-	_shape = "o";
 	_type = type;
 }
 
@@ -109,7 +105,12 @@ void	Enemy::shoot(void)
 
 void	Enemy::display(void *&window)
 {
-	mvwprintw((WINDOW *)window, this->_x, this->_y, this->_shape.c_str());
+	mvwprintw((WINDOW *)window, this->_x, this->_y, "%c", _shape);
+}
+
+void	Enemy::display(char shape, void *&window)
+{
+	mvwprintw((WINDOW *)window, this->_x, this->_y, "%c", shape);
 }
 
 void	Enemy::action(void *&window)

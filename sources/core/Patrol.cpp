@@ -6,14 +6,14 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:36:23 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 18:17:23 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 19:11:21 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.hpp"
 #include "Patrol.hpp"
 
-Patrol::Patrol(void): Enemy("<")
+Patrol::Patrol(void): Enemy('8')
 {
 	this->_move = 0;
 	this->_shape = "<";

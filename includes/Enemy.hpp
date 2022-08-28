@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:20:44 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 14:11:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:37:11 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class	Enemy
 		int		_pa_cost;
 		int		_pm_cost;
 		int		_dir;
-		std::string	_shape;
+		char	_shape;
 		//int	_hp;
 		int	_x_start;
 		int	_y_start;
@@ -36,9 +36,10 @@ class	Enemy
 		virtual void	movement(void);
 		void			generate_pa_pm(void);
 		void			display(void *&window);
+		void			display(char shape, void *&window);
 	public:
 		Enemy(void);
-		Enemy(const std::string &shape);
+		Enemy(const char &shape);
 		Enemy(int type);
 		Enemy(int x, int y, int type);
 		Enemy(const Enemy &src);

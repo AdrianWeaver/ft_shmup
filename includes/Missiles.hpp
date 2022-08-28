@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:52:56 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 14:49:44 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 18:12:14 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 # include "ft_shmup.hpp"
 
-class	Missiles: public Enemy
+class	Missiles: public Pusher
 {
 	private:
 		//int	_hp;
 		//int	_speed;
-		//int	_pm;
-		//int	_pm;
+		void	movement(void);
+		void	generate_pm(void);
 	public:
 		Missiles(void);
 		Missiles(int x, int y);
 		~Missiles(void);
+		void	action(void *&window);
 };
 
 #endif

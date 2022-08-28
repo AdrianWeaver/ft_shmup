@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 18:50:17 by omoudni          ###   ########.fr       */
+/*   Updated: 2022/08/28 19:25:57 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ extern std::vector<Patrol> g_patrol;
 //ENEMIES
 
 #define ENEMY -1
+#define ENEMY_BULLET_1 10
+#define ENEMY_BULLET_2 5
+#define ENEMY_BULLET_3 1
 
 #define STAY 0
 #define PUSHER 1
@@ -72,7 +75,7 @@ extern std::vector<Patrol> g_patrol;
 
 //ENEMIES COSTS
 #define STAY_PA 0
-#define PUSHER_PA 0
+#define PUSHER_PA 300
 #define PATROL_PA 0
 #define PATROL_Z_PA 0
 #define PUSHER_Z_PA 0
