@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 17:23:09 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 18:21:35 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ std::vector<Weapon>	g_weapon;
 std::vector<Pusher>	g_pusher;
 std::vector<Missiles>	g_missiles;
 std::vector<Objects>	g_objs;
+std::vector<Patrol>	g_patrol;
 
 void	ft_background(void *window)
 {
@@ -33,7 +34,7 @@ void	ft_background(void *window)
 	refresh();
 }
 
-int	ft_turn(void *&window, int key)
+int	ft_turn(void *&window, int key, t_data *game)
 {
 	clear();
 	(void)key;
@@ -52,12 +53,33 @@ int	ft_turn(void *&window, int key)
 		for (size_t j = 0; j < g_pusher.size(); j++)
 		{
 			if (g_weapon[i].get_Y() == g_pusher[j].get_Y() && g_pusher[j].get_X() == g_weapon[i].get_X())
+			{
+				g_weapon.erase(g_weapon.begin() + j);
 				g_pusher.erase(g_pusher.begin() + j);
+				game->score += 5;
+				game->frags += 1;
+			}
+		}
+		for (size_t j = 0; j < g_patrol.size(); j++)
+		{
+			if (g_weapon[i].get_Y() == g_patrol[j].get_Y() && g_patrol[j].get_X() == g_weapon[i].get_X())
+			{
+				g_weapon.erase(g_weapon.begin() + j);
+				g_patrol.erase(g_patrol.begin() + j);
+				game->score += 10;
+				game->frags += 1;
+			}
 		}
 	}
 	for (size_t i = 0; i < g_pusher.size(); i++)
 	{
 		g_pusher[i].action(window);
+	}
+	for (size_t i = 0; i < g_patrol.size(); i++)
+	{
+		g_patrol[i].action(window);
+		if ((game->loop % (60 * 4) == 0))
+			g_patrol[i].go_front(window);
 	}
 	refresh();
 	return (0);
@@ -69,8 +91,8 @@ void	ft_aff_ath(void *window, t_data game)
 	for (int i = 0; i <= COLS; i++)
 		mvwprintw((WINDOW *)window, 10, i, "_");
 	mvwprintw((WINDOW *)window, 5, 20, "Level Phase: %d\n", game.phase);
-	mvwprintw((WINDOW *)window, 6, 20, "Frags: A DEFINIR\n");
-	mvwprintw((WINDOW *)window, 5, 60, "SCORE: A DEFINIR\n");
+	mvwprintw((WINDOW *)window, 6, 20, "Frags: %d\n", game.frags);
+	mvwprintw((WINDOW *)window, 5, 60, "SCORE: %d\n", game.score);
 	int w = 60;
 	const char *str = "CPP INVADER\n";
 	for (int j = 0; j <= 11; j++)
@@ -107,11 +129,13 @@ int	main(void)
 
 	game.loop = 0;
 	game.phase = 1;
+	game.score = 0;
+	game.frags = 0;
 	while (1)
 	{
 		ft_spawn_mobs(game);
 		ft_spawn_objs(&game);
-		if (ft_turn(window, key))
+		if (ft_turn(window, key, &game))
 			break;
 		ft_background(window);
 		ft_aff_ath(window, game);

@@ -45,6 +45,7 @@ SRCS				=\
 						Weapons.cpp\
 						Pusher.cpp\
 						Objects.cpp\
+						Patrol.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 16:01:00 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 17:41:16 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include "Objects.hpp"
 #include <memory>
 #include "Objects.hpp"
+#include "Patrol.hpp"
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
@@ -31,6 +32,7 @@ extern std::vector<SpaceShip> g_allies;
 extern std::vector<Objects>	g_objs;
 extern std::vector<Pusher> g_pusher;
 extern std::vector<Missiles> g_missiles;
+extern std::vector<Patrol> g_patrol;
 
 
 # define FRAME_MS 16
@@ -105,6 +107,8 @@ typedef struct s_data
 {
 	int loop;
 	int phase;
+	int score;
+	int frags;
 }		t_data;
 
 

@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:53:59 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 11:51:18 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 18:20:13 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int ft_spawn_phase_1(t_data *game)
 		g_pusher.emplace_back(Pusher());
 	if ((game->loop % (60 * 8) == 0))
 		g_pusher.emplace_back(Pusher());
+	if ((game->loop % (60 * 8) == 0))
+		g_patrol.emplace_back(Patrol());
 	//if ((game->loop % (60 * 8) == 0) && g_enemies.size() <= 10)
 	//{
 		//if (decision == 1)
