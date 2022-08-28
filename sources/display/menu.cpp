@@ -6,13 +6,13 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:32:02 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 19:47:12 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:19:25 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.hpp"
 
-int	ft_menu(void *window)
+int	ft_menu(void *window, t_data *game)
 {
 	int	ch;
 
@@ -26,6 +26,7 @@ int	ft_menu(void *window)
 	mvwprintw((WINDOW *)window, 7, COLS / 2 - 29, "");
 	mvwprintw((WINDOW *)window, LINES / 2, COLS / 2 - 12,"press ENTER to continue");
 	mvwprintw((WINDOW *)window, LINES / 2 + 1, COLS / 2 - 12,"press ESC to quit");
+	mvwprintw((WINDOW *)window, LINES / 2 + 2, COLS / 2 - 12,"PRESS 1 FOR HARDMODE");
 	refresh();
 	while ((ch = getch()))
 	{
@@ -33,6 +34,11 @@ int	ft_menu(void *window)
 			return (-1);
 		if (ch == 10)
 			return (0);
+		if (ch == 49)
+		{
+			game->mode = 1;
+			return (0);
+		}
 	}
 	return (0);
 }

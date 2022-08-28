@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 20:46:57 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 23:18:34 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ extern std::vector<Pusher> g_pusher;
 extern std::vector<Missiles> g_missiles;
 extern std::vector<Patrol> g_patrol;
 
+# define HARDMODE 1
 
 # define FRAME_MS 16
 //KEYS
@@ -76,7 +77,7 @@ extern std::vector<Patrol> g_patrol;
 //ENEMIES COSTS
 #define STAY_PA 0
 #define PUSHER_PA 300
-#define PATROL_PA 50
+#define PATROL_PA 300
 #define PATROL_Z_PA 0
 #define PUSHER_Z_PA 0
 #define PUSHER_UP_PA 0
@@ -84,7 +85,7 @@ extern std::vector<Patrol> g_patrol;
 #define PATROL_DOWN_PA 0
 
 #define STAY_PM 0
-#define PUSHER_PM 30
+#define PUSHER_PM 60
 #define PATROL_PM 30
 #define PATROL_Z_PM 0
 #define PUSHER_Z_PM 0
@@ -98,13 +99,17 @@ extern std::vector<Patrol> g_patrol;
 #define RED_STAR 1
 #define YELLOW_STAR 2
 #define METEOR 3
+#define LIFE 4
 
-//STARS
+#ifndef HP
 
-#define STAR 0
-#define RED_STAR 1
-#define YELLOW_STAR 2
-#define METEOR 3
+#define HP 3
+
+#endif
+
+#define PUSHER_POINT 30
+#define PATROL_POINT 50
+#define BULLET_POINT 10
 
 typedef struct s_data
 {
@@ -112,6 +117,8 @@ typedef struct s_data
 	int phase;
 	int score;
 	int frags;
+	int hp;
+	int mode;
 }		t_data;
 
 
@@ -122,7 +129,7 @@ int		ft_spawn_phase_3(t_data &game);
 int		ft_spawn_mobs(t_data &game);
 void	ft_spawn_objs(t_data *game);
 int		ft_secure_nodelay(void **window);
-int		ft_menu(void *window);
+int		ft_menu(void *window, t_data *game);
 
 
 #endif
