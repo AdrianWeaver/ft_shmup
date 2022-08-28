@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 20:18:37 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 20:34:33 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ int	ft_turn(void *&window, int key, t_data *game)
 		}
 	}
 	for (size_t i = 0; i < g_missiles.size(); i++)
+	{
 		g_missiles[i].action(window);
-
+		if (g_allies[0].get_Y() == g_missiles[i].get_Y() && g_missiles[i].get_X() == g_allies[0].get_X())
+			return (1);
+	}
 	refresh();
 	return (0);
 }
