@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 21:36:29 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 14:28:31 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 #include <vector>
 #include "SpaceShip.hpp"
 #include "Enemy.hpp"
+#include "Pusher.hpp"
 #include "ncurses.h"
 #include "Missiles.hpp"
 #include "Weapon.hpp"
+#include <memory>
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
-extern std::vector<SpaceShip>	g_allies;
-
+extern std::vector<SpaceShip> g_allies;
+extern std::vector<Pusher> g_pusher;
 
 # define FRAME_MS 16
 //KEYS
@@ -32,7 +34,15 @@ extern std::vector<SpaceShip>	g_allies;
 # define KEY_CTRL_D 4
 # define KEY_SPACE 32
 
-//NAME ENEMY
+//ALLIES
+#define ALLY 1
+
+#define ALLY_SHAPE ">"
+#define ALLY_PM 0
+
+//ENEMIES
+
+#define ENEMY -1
 
 #define STAY 0
 #define PUSHER 1
@@ -43,8 +53,34 @@ extern std::vector<SpaceShip>	g_allies;
 #define PUSHER_DOWN 6
 #define PATROL_DOWN 7
 
-#define ALLY 1
-#define ENEMY -1
+//ENEMIES SHAPES
+#define PUSHER_SHAPE '<'
+#define STAY_SHAPE '0'
+#define PATROL_SHAPE '8'
+#define PUSHER_Z_SHAPE 'Z'
+#define PUSHER_UP_SHAPE '\\'
+#define PUSHER_DOWN_SHAPE '/'
+#define PATROL_DOWN_SHAPE '8'
+
+//ENEMIES COSTS
+#define STAY_PA 0
+#define PUSHER_PA 0
+#define PATROL_PA 0
+#define PATROL_Z_PA 0
+#define PUSHER_Z_PA 0
+#define PUSHER_UP_PA 0
+#define PUSHER_DOWN_PA 0
+#define PATROL_DOWN_PA 0
+
+#define STAY_PM 0
+#define PUSHER_PM 30
+#define PATROL_PM 0
+#define PATROL_Z_PM 0
+#define PUSHER_Z_PM 0
+#define PUSHER_UP_PM 0
+#define PUSHER_DOWN_PM 0
+#define PATROL_DOWN_PM 0
+
 
 typedef struct s_data
 {

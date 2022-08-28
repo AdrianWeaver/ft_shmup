@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/27 23:29:31 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 14:25:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 
 std::vector<Enemy>	g_enemies;
 std::vector<SpaceShip>	g_allies;
+std::vector<Pusher>	g_pusher;
 
-int	ft_display(void *&window, SpaceShip &Ship, int key)
+int	ft_turn(void *&window, int key)
 {
 	clear();
+	(void)key;
 	for (size_t i = 0; i < g_allies.size(); i++)
 	{
-		(void)Ship;
-		g_allies[i].movement(key, window);
-		if (g_allies[i].get_Y() == g_enemies[i].get_Y_E() && g_enemies[i].get_X_E() == g_allies[i].get_X())
-			return (1);
-		mvwprintw((WINDOW *)window, g_allies[i].get_X(), g_allies[i].get_Y(), ">>|=>");
+		g_allies[i].action(key, window);
+		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
+			//return (1);
 	}
-	for (size_t i = 0; i < g_enemies.size(); i++)
+	for (size_t i = 0; i < g_pusher.size(); i++)
 	{
-		g_enemies[i].movement_E();
-		if (g_allies[i].get_Y() == g_enemies[i].get_Y_E() && g_enemies[i].get_X_E() == g_allies[i].get_X())
-			return (1);
-		mvwprintw((WINDOW *)window, g_enemies[i].get_X_E(), g_enemies[i].get_Y_E(), "<===<");
+		g_pusher[i].action(window);
+		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
+			//return (1);
+		//mvwprintw((WINDOW *)window, g_enemies[i].get_X(), g_enemies[i].get_Y(), "<===<");
 	}
 	refresh();
 	return (0);
@@ -52,11 +52,10 @@ int	main(void)
 	x = 10;
 	y = 10;
 	key = 0;
+	std::srand(time(NULL));
 	if (ft_init_screen(&window) == 1)
 		return (0);
-	SpaceShip Ship(5,4);
-	g_allies.push_back(Ship);
-	g_allies.push_back(Weapon(Ship));
+	g_allies.emplace_back(SpaceShip(5,4));
 //	Enemy	enemy;
 //	e_list.push_back(enemy);
 //	Enemy	enemy2;
@@ -65,7 +64,7 @@ int	main(void)
 	while (1)
 	{
 		ft_spawn_mobs(game);
-		if (ft_display(window, Ship, key))
+		if (ft_turn(window, key))
 			break;
 		key = getch();
 		if (key == KEY_ESC || key == 3)
@@ -73,8 +72,8 @@ int	main(void)
 		//Ship.movement(key);
 		//mvwprintw((WINDOW *)window, 0, 0, " Weapon_x = %d Weapon y = %d\n", weapon.get_X(), weapon.get_Y());
 		//enemy2.movement_E();
-		//mvwprintw((WINDOW *)window, enemy.get_X_E(), enemy.get_Y_E(), "<=||<<");
-		//mvwprintw((WINDOW *)window, enemy2.get_X_E(), enemy2.get_Y_E(), "<=||<<");
+		//mvwprintw((WINDOW *)window, enemy.get_X(), enemy.get_Y(), "<=||<<");
+		//mvwprintw((WINDOW *)window, enemy2.get_X(), enemy2.get_Y(), "<=||<<");
 		refresh();			/* Print it on to the real screen */
 		getch();			/* Wait for user input */
 		std::this_thread::sleep_for(std::chrono::duration<double, std::ratio<1,30>>(1));

@@ -43,6 +43,7 @@ SRCS				=\
 						spawn_enemies.cpp\
 						Missiles.cpp\
 						Weapons.cpp\
+						Pusher.cpp\
 					)\
 					$(addprefix $(SRCS_PARSING),	\
 						my_example_parsing_file.cpp\
@@ -91,7 +92,7 @@ re:					fclean
 					@make all $(SILENT)
 
 test:				$(NAME)
-					./$(NAME)
+					./$(NAME) 2>logs
 
 vtest:				$(NAME)
 					valgrind --leak-check=full\

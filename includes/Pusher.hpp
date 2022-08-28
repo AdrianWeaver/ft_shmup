@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:00:13 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 16:14:56 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 14:11:32 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@
 
 #include "ft_shmup.hpp"
 
-class	Pusher: public Enemy
+class	Pusher:public Enemy
 {
 	private:
-		int	_dmg;
-		int	_pm_cost;
+		int		_dmg;
+		std::string	_shape;
+		void	shoot(void);
+		void	movement(void);
 	public:
+		Pusher(void);
 		Pusher(int phase);
-}
+		Pusher(int x, int y);
+		~Pusher(void);
+};
 
 #endif

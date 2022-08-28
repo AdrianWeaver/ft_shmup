@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:52:56 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 18:45:24 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 10:28:10 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,17 @@
 
 #include "ft_shmup.hpp"
 
-class	Missiles
+class	Missiles: public Enemy
 {
 	private:
 		//int	_hp;
-		int	_x;
-		int	_y;
-		int	_dir;
 		//int	_speed;
 		//int	_pm;
 		//int	_pm;
 	public:
-		Missiles(SpaceShip ally);
-		Missiles(Enemy enemy);
+		Missiles(void);
+		Missiles(int x, int y);
 		~Missiles(void);
-		int	get_X_M(SpaceShip ally);
-		int	get_Y_M(SpaceShip ally);
-		int	get_X_M(Enemy enemy);
-		int	get_Y_M(Enemy enemy);
 };
 
 #endif

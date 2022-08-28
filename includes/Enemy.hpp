@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:20:44 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/27 23:13:44 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 14:11:25 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,36 @@
 
 class	Enemy
 {
-	private:
-		int	_x;
-		int	_y;
-		int	_type;
-		int	_pm;
-		int	_pa;
+	protected:
+		int		_x;
+		int		_y;
+		int		_type;
+		int		_pa;
+		int		_pm;
+		int		_pa_cost;
+		int		_pm_cost;
+		int		_dir;
+		std::string	_shape;
 		//int	_hp;
-		int	_speed;	// frame per movement
 		int	_x_start;
 		int	_y_start;
+		virtual void	shoot(void);
+		virtual void	movement(void);
+		void			generate_pa_pm(void);
+		void			display(void *&window);
 	public:
 		Enemy(void);
+		Enemy(const std::string &shape);
 		Enemy(int type);
 		Enemy(int x, int y, int type);
+		Enemy(const Enemy &src);
 		virtual ~Enemy(void);
-		void	movement_E(void);
-		int	get_X_E(void);
-		int	get_Y_E(void) const;
-		void	set_X_E(int x);
-		void	set_Y_E(int y);
-		void	setType(int type);
+		virtual int		get_X(void) const;
+		virtual int		get_Y(void) const;
+		virtual void	set_X(int x);
+		virtual void	set_Y(int y);
+		virtual void	setType(int type);
+		void			action(void *&window);
 };
 
 #endif
