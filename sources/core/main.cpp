@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 16:19:59 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 17:23:09 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_background(void *window)
 		g_objs[i].aff_obj();
 		mvwaddch((WINDOW *)window, g_objs[i].get_X_O(), g_objs[i].get_Y_O(), g_objs[i].get_S() | COLOR_PAIR(g_objs[i].get_C() | A_BOLD));
 	}
-	//clear();
 	refresh();
 }
 
@@ -41,20 +40,24 @@ int	ft_turn(void *&window, int key)
 	for (size_t i = 0; i < g_allies.size(); i++)
 	{
 		g_allies[i].action(key, window);
-		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
-			//return (1);
+		for (size_t i = 0; i < g_pusher.size(); i++)
+		{
+			if (g_allies[0].get_Y() == g_pusher[i].get_Y() && g_pusher[i].get_X() == g_allies[0].get_X())
+				return (1);
+		}
 	}
-	 for (size_t i = 0; i < g_weapon.size(); i++)
+	for (size_t i = 0; i < g_weapon.size(); i++)
 	{
 		g_weapon[i].action(window);
+		for (size_t j = 0; j < g_pusher.size(); j++)
+		{
+			if (g_weapon[i].get_Y() == g_pusher[j].get_Y() && g_pusher[j].get_X() == g_weapon[i].get_X())
+				g_pusher.erase(g_pusher.begin() + j);
+		}
 	}
-
 	for (size_t i = 0; i < g_pusher.size(); i++)
 	{
 		g_pusher[i].action(window);
-		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
-			//return (1);
-		//mvwprintw((WINDOW *)window, g_enemies[i].get_X(), g_enemies[i].get_Y(), "<===<");
 	}
 	refresh();
 	return (0);

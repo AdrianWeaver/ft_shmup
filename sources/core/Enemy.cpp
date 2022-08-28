@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:25:52 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 16:11:45 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 16:48:07 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ Enemy::~Enemy(void)
 
 int	Enemy::get_X(void) const
 {
-	if (_type == STAY)
-		return (_x);
 	return (_x);
 }
 
@@ -85,12 +83,6 @@ void	Enemy::setType(int type)
 
 int	Enemy::get_Y(void) const
 {
-	if (_type == STAY)
-		return (_y);
-	if (_type == PUSHER)
-		return (_y - 2);
-	if (_type == PATROL)
-		return (_y);
 	return (_y);
 }
 

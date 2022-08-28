@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 08:45:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 16:17:50 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 16:48:35 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	Pusher::movement(void)
 {
 	if (this->_pm >= this->_pm_cost)
 	{
-		--this->_y;
+		this->set_Y(get_Y() - 1);
 		this->_pm -= this->_pm_cost;
 	}
 	return ;

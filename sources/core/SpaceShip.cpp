@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:04:04 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 15:11:50 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 16:46:24 by jtaravel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	SpaceShip::shoot(void)
 void	SpaceShip::movement(int input)
 {
 	if (input == KEY_DOWN && _x + 1 < LINES)
-		++_x;
+		this->set_X(get_X() + 1);
 	if (input == KEY_UP && _x - 1 > 0)
-		--_x;
+		this->set_X(get_X() - 1);
 	if (input == KEY_LEFT && _y - 1 > 0)
-		--_y;
+		this->set_Y(get_Y() - 1);
 	if (input == KEY_RIGHT && _y + 1 < COLS)
-		++_y;
+		this->set_Y(get_Y() + 1);
 }
 
 void	SpaceShip::display(void *&window)
