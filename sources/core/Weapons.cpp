@@ -6,23 +6,25 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:22:07 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 14:26:58 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:08:36 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "ft_shmup.hpp"
 #include "Weapon.hpp"
 
-Weapon::Weapon(void): _pm(0)
+Weapon::Weapon(void): _pm(0),_pm_cost(ALLY_PM)
 {
+	this->_shape = '-';
 	return ;
 }
 
-Weapon::Weapon(int x, int y, int dir): _pm(0), _shape('-')
+Weapon::Weapon(int x, int y, int dir, char shape): _pm(0), _pm_cost(1)
 {
 	this->_x = x;
 	this->_y = y;
 	this->_dir = dir;
+	this->_shape = shape;
 }
 
 Weapon::~Weapon(void)

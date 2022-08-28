@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 15:29:31 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 16:01:33 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 #include <vector>
 #include "ft_shmup.hpp"
 
-std::vector<Enemy>	g_enemies;
+std::vector<Enemy>		g_enemies;
 std::vector<SpaceShip>	g_allies;
-std::vector<Pusher>	g_pusher;
+std::vector<Pusher>		g_pusher;
 std::vector<Objects>	g_objs;
+std::vector<Missiles>	g_missiles;
+std::vector<Weapon>	g_weapon;
 
 int	ft_turn(void *&window, int key)
 {
@@ -31,6 +33,10 @@ int	ft_turn(void *&window, int key)
 		//if (g_allies[i].get_Y() == g_enemies[i].get_Y() && g_enemies[i].get_X() == g_allies[i].get_X())
 			//return (1);
 	}
+	for (size_t i = 0; i < g_weapon.size(); i++)
+	{
+		g_weapon[i].action(window);
+	}
 	for (size_t i = 0; i < g_pusher.size(); i++)
 	{
 		g_pusher[i].action(window);
@@ -38,6 +44,7 @@ int	ft_turn(void *&window, int key)
 			//return (1);
 		//mvwprintw((WINDOW *)window, g_enemies[i].get_X(), g_enemies[i].get_Y(), "<===<");
 	}
+
 	refresh();
 	return (0);
 }

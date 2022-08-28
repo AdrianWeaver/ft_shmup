@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:05:54 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 12:06:37 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:14:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ class	Weapon: public SpaceShip
 		//int	_speed;
 		int	_pm;
 		int	_pm_cost;
-		char _shape;
 		Weapon(void);
 		void	generate_pm(void);
 		void	movement(void);
 	public:
-		Weapon(int x, int y, int dir);
+		Weapon(int x, int y, int dir, char shape);
 		~Weapon(void);
 		int	get_X_M(SpaceShip ally);
 		int	get_Y_M(SpaceShip ally);

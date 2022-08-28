@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 08:45:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 14:21:48 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:36:59 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 Pusher::Pusher(void): Enemy("<")
 {
-	fprintf(stderr, "Pusher constructeur defaut\n");
 	this->_shape = "<";
 	this->_pa_cost = PUSHER_PA;
 	this->_pm_cost = PUSHER_PM;
@@ -44,12 +43,10 @@ void	Pusher::shoot(void)
 
 void	Pusher::movement(void)
 {
-	fprintf(stderr, "Pusher move entered\n");
 	if (this->_pm >= this->_pm_cost)
 	{
 		--this->_y;
 		this->_pm -= this->_pm_cost;
-		fprintf(stderr, "Pusher move: _pm = %d _pm_cost = %d\n", this->_pm, this->_pm_cost);
 	}
 	return ;
 }

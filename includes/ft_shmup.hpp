@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 15:18:18 by jtaravel         ###   ########.fr       */
+/*   Updated: 2022/08/28 16:01:00 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
+extern std::vector<Weapon> g_weapon;
 extern std::vector<SpaceShip> g_allies;
 extern std::vector<Pusher> g_pusher;
 extern std::vector<Objects> g_objs;
+extern std::vector<Missiles> g_missiles;
 
 # define FRAME_MS 16
 //KEYS

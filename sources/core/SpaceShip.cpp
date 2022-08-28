@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:04:04 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 12:46:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 15:11:50 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	SpaceShip::set_Y(int y)
 
 void	SpaceShip::shoot(void)
 {
-	g_allies.emplace_back(Weapon(this->_x, this->_y, this->_dir));
+	g_weapon.emplace_back(Weapon(this->_x, this->_y, this->_dir, '-'));
 }
 
 void	SpaceShip::movement(int input)
@@ -71,7 +71,7 @@ void	SpaceShip::movement(int input)
 
 void	SpaceShip::display(void *&window)
 {
-	mvwprintw((WINDOW *)window, this->_x, this->_y, &this->_shape);
+	mvwprintw((WINDOW *)window, this->_x, this->_y, "%c", this->_shape);
 }
 
 void	SpaceShip::action(void *&window)
@@ -85,6 +85,6 @@ void	SpaceShip::action(int input, void *&window)
 		|| input == KEY_RIGHT)
 		this->movement(input);
 	if (input == KEY_SPACE)
-		this->shoot();
+		shoot();
 	this->display(window);
 }

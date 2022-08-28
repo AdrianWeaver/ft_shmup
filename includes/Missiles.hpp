@@ -6,15 +6,14 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 17:52:56 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 10:28:10 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:49:44 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MISSILES_HPP
+# define MISSILES_HPP
 
-#define MISSILES_HPP
-
-#include "ft_shmup.hpp"
+# include "ft_shmup.hpp"
 
 class	Missiles: public Enemy
 {

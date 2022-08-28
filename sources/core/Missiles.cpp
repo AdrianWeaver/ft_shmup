@@ -6,10 +6,11 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 18:00:27 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 10:30:54 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 14:52:16 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_shmup.hpp"
 #include "Missiles.hpp"
 
 Missiles::Missiles(void)
