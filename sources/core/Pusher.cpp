@@ -6,12 +6,11 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 08:45:38 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 19:01:33 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 23:06:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_shmup.hpp"
-#include "Pusher.hpp"
 #include "Pusher.hpp"
 
 Pusher::Pusher(void): Enemy('<')

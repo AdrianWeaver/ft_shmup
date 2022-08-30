@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:56:46 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 20:46:57 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 22:24:33 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <memory>
 #include "Objects.hpp"
 #include "Patrol.hpp"
+#include "Boss.hpp"
 
 // GLOBALS BECAUSE WE CAN <3
 extern std::vector<Enemy>	g_enemies;
@@ -92,6 +93,10 @@ extern std::vector<Patrol> g_patrol;
 #define PUSHER_DOWN_PM 0
 #define PATROL_DOWN_PM 0
 
+
+#define BOSS_SHAPE_1 "/  _  \\"
+#define BOSS_SHAPE_2 "|-=(_)=-|"
+#define BOSS_SHAPE_3 "\\     /"
 //STARS
 
 #define STAR 0

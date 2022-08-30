@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pusher.hpp                                         :+:      :+:    :+:   */
+/*   Boss.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 16:00:13 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 23:22:46 by aweaver          ###   ########.fr       */
+/*   Created: 2022/08/28 22:00:59 by aweaver           #+#    #+#             */
+/*   Updated: 2022/08/28 23:25:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHER_HPP
+#pragma once
+# include "ft_shmup.hpp"
 
-#define PUSHER_HPP
-
-#include "ft_shmup.hpp"
-
-class	Pusher:virtual public Enemy
+class	Boss:virtual public Enemy
 {
 	protected:
 		int		_dmg;
 		void	shoot(void);
 		virtual void	movement(void);
+		void	boss_movement(void);
+		void	boss_display(void *window);
+		void	boss_shoot(void);
 	public:
-		Pusher(void);
-		Pusher(int phase);
-		Pusher(int x, int y);
-		virtual ~Pusher(void);
+		Boss(void);
+		virtual ~Boss(void);
+		void	boss_action(void *&window);
 };
-
-#endif

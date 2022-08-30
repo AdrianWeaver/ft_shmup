@@ -6,7 +6,7 @@
 /*   By: jtaravel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 12:20:44 by jtaravel          #+#    #+#             */
-/*   Updated: 2022/08/28 18:37:11 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 23:31:26 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ class	Enemy
 		Enemy(int x, int y, int type);
 		Enemy(const Enemy &src);
 		virtual ~Enemy(void);
-		virtual int		get_X(void) const;
-		virtual int		get_Y(void) const;
-		virtual void	set_X(int x);
-		virtual void	set_Y(int y);
-		virtual void	setType(int type);
+		int		get_X(void) const;
+		int		get_Y(void) const;
+		void	set_X(int x);
+		void	set_Y(int y);
+		void	setType(int type);
 		void			action(void *&window);
 };
 

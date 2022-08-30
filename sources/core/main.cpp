@@ -6,7 +6,7 @@
 /*   By: omoudni <omoudni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 22:09:33 by aweaver           #+#    #+#             */
-/*   Updated: 2022/08/28 20:51:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/08/28 23:35:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,10 @@ int	main(void)
 	game.phase = 1;
 	game.score = 0;
 	game.frags = 0;
+	Boss boss;
 	while (1)
 	{
+		boss.boss_action(window);
 		ft_spawn_mobs(game);
 		ft_spawn_objs(&game);
 		if (ft_turn(window, key, &game))
